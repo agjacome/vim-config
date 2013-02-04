@@ -1,9 +1,9 @@
-" COMPATIBILITY AND PLUGIN LOADING
 set nocompatible                " vim defaults instead of vi
 set encoding=utf-8              " always use utf
 
-filetype off                    " load plugins via pathogen
-call pathogen#infect()
+" load submodules via pathogen
+filetype off
+call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
 set backupdir=~/.vim/backup     " directory to save backup files
@@ -12,15 +12,26 @@ set directory=~/.vim/temp       " directory to save swap files
 filetype plugin indent on       " enable filetypes and indentation
 syntax enable                   " enable syntax highlight
 
-" SETTINGS
+" MAIN SETTINGS
 set hidden                      " allow dirty background buffers
 set autoindent                  " autoindent always
+set backspace=2                 " make backspace work as intended
 set nowrap                      " don't wrap long lines automatically
 set textwidth=80                " default text width is 80 columns
-set expandtab                   " raplace tabs with space characters
+set expandtab                   " replace tabs with space characters
 set tabstop=4                   " a tab is replaced with four spaces
 set softtabstop=4               " a softtab is replaced with four spaces
 set shiftwidth=4                " autoindent is also four spaces width
+set hlsearch                    " highlight search matches
+set incsearch                   " do incremental searching automatically
+set ignorecase                  " searches are case insensitive...
+set smartcase                   " ...unless they contain uppercase letters
+
+" completion options
+set complete=.,b,u,]
+set wildmode=longest
+set completeopt=menuone,preview
+set pumheight=10
 
 " colorscheme
 if $TERM =~ "-256color"
@@ -30,52 +41,45 @@ endif
 set background=dark
 colorscheme hybrid
 
+" show title
+set title
+set titleold=""
+set titlestring="vim: %F"
+
 set number                      " always show line numbers
 set ruler                       " show cursor position all time
 set showcmd                     " display incomplete commands
 set laststatus=2                " always show statusline
-set scrolloff=10                " provide some context when editting
-set cursorline                  " highlight current line (VERY SLOW)
+set scrolloff=10                " provide some context
+set cursorline                  " highlight current line
 
 set list                        " show whitespace characters
 set listchars=""                " reset whitespace characters list
 set listchars=tab:▸\            " tabs shown as right arrow and spaces
-set listchars+=trail:⋅          " trailing whitespaces show as dots
+set listchars+=trail:⋅          " trailing whitespaces shown as dots
 set listchars+=extends:❯        " char to show when line continues right
 set listchars+=precedes:❮       " char to show when line continues left
 set fillchars+=vert:│           " vertical splits less gap between bars
 
-" statusline format (Replaced by Powerline)
-" if has("statusline") && !&cp
-"     " File  ModFlag  ROFlag  Line/Lines[Pos%]  Col  GitStatus | CharCode  Buffer
-"     set statusline=%f\ %m\ %r
-"     set statusline+=\ Line:%l/%L[%p%%]
-"     set statusline+=\ Col:%v
-"     set statusline+=\ %{fugitive#statusline()}
-"     set statusline+=%=\ [%b][0x%B]
-"     set statusline+=\ Buf:#%n
-" endif
-
-set hlsearch                  " highlight search matches
-set incsearch                 " do incremental searching automatically
-set ignorecase                " searches are case insensitive...
-set smartcase                 " ...unless they contain uppercase letters
-
-" completion options
-set complete=.,b,u,]
-set wildmode=longest
-set completeopt=menu,menuone,longest
-set pumheight=10
+" statusline format (replaced by powerline)
+if has("statusline") && !&cp
+    set statusline=%f\ %m\ %r
+    set statusline+=\ Line:%l/%L[%p%%]
+    set statusline+=\ Col:%v
+    set statusline+=\ %{fugitive#statusline()}
+    set statusline+=%=\ [%b][0x%B]
+    set statusline+=\ Buf:#%n
+endif
 
 if has("autocmd")
-    " Makefiles should use real tabs, not spaces
+    " makefiles should use real tabs, not spaces
     au FileType make set noexpandtab
-    " MarkDown files matching their filetype and using second wrap
+    " markdown files matching their filetype
     au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn,txt}
                 \ setf markdown set wrap wrapmargin=2 textwidth=72
-    " Python files should follow PEP8
+    " python files should follow PEP8
     au FileType python set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
-    " Remember last location in file (except for commit messages)
+    " remember last location in file (except for commit messages)
     au BufReadPost *
                 \ if &filetype !~ '^git\c' && line("'\"") > 0
                 \ && line("'\"") <= line("$") | exe "normal! g`\"" | endif
