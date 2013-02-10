@@ -46,6 +46,11 @@ endif
 set background=dark
 colorscheme hybrid
 
+" vimdiff
+if &diff
+    set diffopt=filler,foldcolumn:0
+endif
+
 " show title
 set title
 set titleold=""
