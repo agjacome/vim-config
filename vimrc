@@ -175,6 +175,7 @@ let g:NERDCreateDefaultMappings = 0
 let g:NERDCommentWholeLinesInVMode = 1
 let g:NERDSpaceDelims = 1
 map <Leader>c <plug>NERDCommenterToggle
+map <Leader>cs <plug>NERDComSexyComment
 
 " Powerline
 let g:Powerline_symbols = 'compatible'
