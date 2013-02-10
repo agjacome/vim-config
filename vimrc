@@ -134,6 +134,3 @@ let g:clang_use_library=1
 
 " SuperTab
 let g:SuperTabDefaultCompletionType='context'
-
-" DelimitMate
-let g:delimitMate_no_esc_mapping=1
