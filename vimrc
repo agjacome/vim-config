@@ -35,7 +35,7 @@ set formatoptions+=j            " remove comments when joining lines
 " completion options
 set complete=.,b,u,]
 set wildmode=longest,list
-set completeopt=menuone,preview
+set completeopt=menuone
 set pumheight=10
 
 " colorscheme
@@ -142,10 +142,13 @@ map <Right> :echo "no!"<CR>
 map <Up>    :echo "no!"<CR>
 map <Down>  :echo "no!"<CR>
 
-" rson's delimitmate
+" simple delimitmate
 inoremap {<CR> {<CR>}<C-o>O
 inoremap [<CR> [<CR>]<C-o>O
 inoremap (<CR> (<CR>)<C-o>O
+inoremap {<Space> {}<Left>
+inoremap [<Space> []<Left>
+inoremap (<Space> ()<Left>
 
 let mapleader=","
 
