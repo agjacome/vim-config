@@ -146,9 +146,9 @@ map <Down>  :echo "no!"<CR>
 inoremap {<CR> {<CR>}<C-o>O
 inoremap [<CR> [<CR>]<C-o>O
 inoremap (<CR> (<CR>)<C-o>O
-inoremap {<Space> {}<Left>
-inoremap [<Space> []<Left>
-inoremap (<Space> ()<Left>
+inoremap {<Space> { }<Left>
+inoremap [<Space> [ ]<Left>
+inoremap (<Space> ( )<Left>
 
 let mapleader=","
 
