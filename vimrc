@@ -35,7 +35,7 @@ set formatoptions+=j            " remove comments when joining lines
 " completion options
 set complete=.,b,u,]
 set wildmode=longest,list
-set completeopt=menuone
+set completeopt=menu
 set pumheight=10
 
 " colorscheme
@@ -56,7 +56,7 @@ set title
 set titleold=""
 set titlestring="vim: %F"
 
-set number                      " always show line numbers
+set relativenumber              " always show relative line numbers
 set ruler                       " show cursor position all time
 set showcmd                     " display incomplete commands
 set laststatus=2                " always show statusline
@@ -70,16 +70,6 @@ set listchars+=trail:⋅          " trailing whitespaces shown as dots
 set listchars+=extends:❯        " char to show when line continues right
 set listchars+=precedes:❮       " char to show when line continues left
 set fillchars+=vert:│           " vertical splits less gap between bars
-
-" statusline format (replaced by powerline)
-" if has("statusline") && !&cp
-"     set statusline=%f\ %m\ %r
-"     set statusline+=\ Line:%l/%L[%p%%]
-"     set statusline+=\ Col:%v
-"     set statusline+=\ %{fugitive#statusline()}
-"     set statusline+=%=\ [%b][0x%B]
-"     set statusline+=\ Buf:#%n
-" endif
 
 if has("autocmd")
     " makefiles should use real tabs, not spaces
@@ -97,32 +87,17 @@ function! ToggleColours()
         colorscheme hybrid-light
     else
         colorscheme hybrid
-endif
+    endif
 endfunction
 
-function! Rename(dest)
-    if &modified
-        echoe "buffer is modified"
-        return
+function! ToggleNumbers()
+    if (&relativenumber == 1)
+        set number
+    else
+        set relativenumber
     endif
-
-    if len(glob(a:dest))
-        echoe "destination already exists"
-        return
-    endif
-
-    let filename = expand("%:p")
-    let parent = fnamemodify(a:dest, ":p:h")
-
-    if !isdirectory(parent)
-        call mkdir(parent, "p")
-    endif
-
-    exec "saveas " . a:dest
-    call delete(filename)
 endfunction
 
-command! -nargs=1 -complete=file Rename call Rename(<f-args>)
 command! KillWhitespace :normal :%s/ *$//g<cr><c-o><cr>
 
 " MAPPINGS
@@ -154,6 +129,7 @@ let mapleader=","
 
 map <Leader>m :make<CR>
 map <F3> :call ToggleColours()<CR>
+map <F4> :call ToggleNumbers()<CR>
 map <F8> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
@@ -183,4 +159,4 @@ let g:Powerline_symbols = 'compatible'
 
 " SuperTab
 let g:SuperTabDefaultCompletionType='context'
-
+let g:SuperTabContextDefaultCompletionType = '<c-n>'
