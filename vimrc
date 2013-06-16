@@ -149,6 +149,10 @@ let g:NERDCreateDefaultMappings = 1
 let g:NERDCommentWholeLinesInVMode = 1
 let g:NERDSpaceDelims = 1
 
+" NerdTree
+map <Leader>f :NERDTreeToggle<CR>
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
 " Powerline
 let g:Powerline_symbols = 'compatible'
 
