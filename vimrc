@@ -144,11 +144,6 @@ let g:clang_complete_auto=0
 let g:clang_library_path='/usr/lib/llvm'
 let g:clang_use_library=1
 
-" Command-T
-let g:CommandTMaxHeight = 10
-map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
-map <leader>F :CommandTFlush<cr>\|:CommandT %%<cr>
-
 " NerdCommenter
 let g:NERDCreateDefaultMappings = 1
 let g:NERDCommentWholeLinesInVMode = 1
