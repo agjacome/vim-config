@@ -93,8 +93,10 @@ endfunction
 
 function! ToggleNumbers()
     if (&relativenumber == 1)
+        set norelativenumber
         set number
     else
+        set nonumber
         set relativenumber
     endif
 endfunction
