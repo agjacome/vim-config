@@ -57,6 +57,7 @@ set titleold=""
 set titlestring="vim: %F"
 
 set relativenumber              " always show relative line numbers
+set numberwidth=2               " number of digits for line numbers
 set ruler                       " show cursor position all time
 set showcmd                     " display incomplete commands
 set laststatus=2                " always show statusline
@@ -140,6 +141,7 @@ nnoremap <leader><leader> <c-^>
 
 " PLUGIN SETTINGS
 " Clang Complete
+set tags+=/usr/include/tags
 let g:clang_complete_auto=0
 let g:clang_library_path='/usr/lib/llvm'
 let g:clang_use_library=1
