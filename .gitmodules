@@ -52,3 +52,6 @@
 [submodule "bundle/neco_ghc"]
 	path = bundle/neco_ghc
 	url = https://github.com/ujihisa/neco-ghc.git
+[submodule "bundle/syntastic"]
+	path = bundle/syntastic
+	url = https://github.com/scrooloose/syntastic.git

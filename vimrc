@@ -165,3 +165,9 @@ let g:scala_sort_across_groups=1
 " SuperTab
 let g:SuperTabDefaultCompletionType='context'
 let g:SuperTabContextDefaultCompletionType = '<c-n>'
+
+" Syntastic
+let g:syntastic_mode_map = {
+            \ 'mode': 'passive',
+            \ 'active_filetypes': ['ruby', 'python']
+            \ }
