@@ -159,6 +159,9 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 " Powerline
 let g:Powerline_symbols = 'compatible'
 
+" Scala
+let g:scala_sort_across_groups=1
+
 " SuperTab
 let g:SuperTabDefaultCompletionType='context'
 let g:SuperTabContextDefaultCompletionType = '<c-n>'
