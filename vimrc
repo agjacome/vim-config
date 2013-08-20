@@ -171,3 +171,6 @@ let g:syntastic_mode_map = {
             \ 'mode': 'passive',
             \ 'active_filetypes': ['ruby', 'python']
             \ }
+
+" Vim2Hs
+let g:haskell_conceal = 0
