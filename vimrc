@@ -101,6 +101,34 @@ function! ToggleNumbers()
     endif
 endfunction
 
+function! ToggleHex()
+    let l:modified=&mod
+    let l:oldreadonly=&readonly
+    let &readonly=0
+    let l:oldmodifiable=&modifiable
+    let &modifiable=1
+
+    if !exists("b:editHex") || !b:editHex
+        let b:oldft=&ft
+        let b:oldbin=&bin
+        setlocal binary
+        let &ft="xxd"
+        let b:editHex=1
+        %!xxd
+    else
+        let &ft=b:oldft
+        if !b:oldbin
+            setlocal nobinary
+        endif
+        let b:editHex=0
+        %!xxd -r
+    endif
+
+    let &mod=l:modified
+    let &readonly=l:oldreadonly
+    let &modifiable=l:oldmodifiable
+endfunction
+
 command! KillWhitespace :normal :%s/ *$//g<cr><c-o><cr>
 
 " MAPPINGS
@@ -133,6 +161,7 @@ let mapleader=","
 map <Leader>m :make<CR>
 map <F3> :call ToggleColours()<CR>
 map <F4> :call ToggleNumbers()<CR>
+map <F6> :call ToggleHex()<CR>
 map <F8> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
