@@ -19,9 +19,6 @@
 [submodule "SuperTab"]
 	path = bundle/supertab
 	url = git://github.com/ervandew/supertab.git
-[submodule "SnipMate"]
-	path = bundle/snipmate
-	url = git://github.com/garbas/vim-snipmate.git
 [submodule "bundle/tlib"]
 	path = bundle/tlib
 	url = https://github.com/tomtom/tlib_vim.git
