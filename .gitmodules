@@ -19,12 +19,6 @@
 [submodule "SuperTab"]
 	path = bundle/supertab
 	url = git://github.com/ervandew/supertab.git
-[submodule "bundle/tlib"]
-	path = bundle/tlib
-	url = https://github.com/tomtom/tlib_vim.git
-[submodule "bundle/mw_utils"]
-	path = bundle/mw_utils
-	url = https://github.com/MarcWeber/vim-addon-mw-utils.git
 [submodule "bundle/nerdtree"]
 	path = bundle/nerdtree
 	url = git://github.com/scrooloose/nerdtree.git
