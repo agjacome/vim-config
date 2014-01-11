@@ -34,3 +34,6 @@
 [submodule "bundle/easy_align"]
 	path = bundle/easy_align
 	url = https://github.com/junegunn/vim-easy-align.git
+[submodule "bundle/visincr"]
+	path = bundle/visincr
+	url = https://github.com/vim-scripts/VisIncr.git
