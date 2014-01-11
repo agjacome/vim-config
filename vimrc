@@ -196,5 +196,8 @@ let g:syntastic_mode_map = {
             \ 'active_filetypes': ['ruby', 'python']
             \ }
 
+" UltiSnips
+let g:UltiSnipsSnippetDirectories=["UltiSnips", "snippets"]
+
 " Vim2Hs
 let g:haskell_conceal = 0
