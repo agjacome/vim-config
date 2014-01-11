@@ -171,11 +171,6 @@ nnoremap <leader>d "=strftime("%d %b %Y %H:%M")<CR>p
 nnoremap <leader><leader> <c-^>
 
 " PLUGIN SETTINGS
-" Clang Complete
-set tags+=/usr/include/tags
-let g:clang_complete_auto=0
-let g:clang_use_library=1
-
 " NerdCommenter
 let g:NERDCreateDefaultMappings = 1
 let g:NERDCommentWholeLinesInVMode = 1
