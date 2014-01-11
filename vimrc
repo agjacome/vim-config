@@ -171,6 +171,10 @@ nnoremap <leader>d "=strftime("%d %b %Y %H:%M")<CR>p
 nnoremap <leader><leader> <c-^>
 
 " PLUGIN SETTINGS
+" EasyAlign
+vmap <Enter>   <Plug>(EasyAlign)
+nmap <Leader>a <Plug>(EasyAlign)
+
 " NerdCommenter
 let g:NERDCreateDefaultMappings = 1
 let g:NERDCommentWholeLinesInVMode = 1
