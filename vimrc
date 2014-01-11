@@ -35,7 +35,7 @@ set formatoptions+=j            " remove comments when joining lines
 " completion options
 set complete=.,b,u,]
 set wildmode=longest,list
-set completeopt=menu
+set completeopt=longest,menu
 set pumheight=10
 
 " colorscheme
