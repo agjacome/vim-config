@@ -193,11 +193,16 @@ let g:scala_sort_across_groups=1
 " Syntastic
 let g:syntastic_mode_map = {
             \ 'mode': 'passive',
-            \ 'active_filetypes': ['ruby', 'python']
+            \ 'active_filetypes': ['cpp', 'python', 'ruby', 'scala']
             \ }
-
+"
 " UltiSnips
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "snippets"]
+let g:UltiSnipsExpandTrigger="<c-j>"
 
 " Vim2Hs
 let g:haskell_conceal = 0
+
+" YouCompleteMe
+let g:ycm_global_ycm_extra_conf="~/.vim/bundle/ycm/cpp/ycm/.ycm_extra_conf.py"
+nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
