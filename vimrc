@@ -204,5 +204,6 @@ let g:UltiSnipsExpandTrigger="<c-j>"
 let g:haskell_conceal = 0
 
 " YouCompleteMe
+let g:ycm_auto_trigger = 0
 let g:ycm_global_ycm_extra_conf="~/.vim/bundle/ycm/cpp/ycm/.ycm_extra_conf.py"
 nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
