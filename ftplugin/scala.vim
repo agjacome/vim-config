@@ -1,4 +1,4 @@
-setlocal formatoptions=crq
+setlocal formatoptions=crqj
 setlocal textwidth=80
 
 setlocal expandtab
