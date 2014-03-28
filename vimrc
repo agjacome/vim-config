@@ -197,7 +197,6 @@ let g:syntastic_mode_map = {
             \ }
 "
 " UltiSnips
-let g:UltiSnipsSnippetDirectories=["UltiSnips", "snippets"]
 let g:UltiSnipsExpandTrigger="<c-j>"
 
 " Vim2Hs
