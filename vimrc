@@ -159,6 +159,7 @@ inoremap (<Space> ( )<Left>
 let mapleader=","
 
 map <Leader>m :make<CR>
+map <Leader>k :KillWhitespace<CR>
 map <F3> :call ToggleColours()<CR>
 map <F4> :call ToggleNumbers()<CR>
 map <F6> :call ToggleHex()<CR>
@@ -191,10 +192,7 @@ set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
 let g:scala_sort_across_groups=1
 
 " Syntastic
-let g:syntastic_mode_map = {
-            \ 'mode': 'passive',
-            \ 'active_filetypes': ['cpp', 'python', 'ruby', 'scala']
-            \ }
+let g:syntastic_mode_map = { 'mode': 'passive' }
 "
 " UltiSnips
 let g:UltiSnipsExpandTrigger="<c-j>"
@@ -204,5 +202,4 @@ let g:haskell_conceal = 0
 
 " YouCompleteMe
 let g:ycm_auto_trigger = 0
-let g:ycm_global_ycm_extra_conf="~/.vim/bundle/ycm/cpp/ycm/.ycm_extra_conf.py"
 nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
