@@ -3,8 +3,7 @@ set encoding=utf-8              " always use utf
 
 " load submodules via pathogen
 filetype off
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
+call pathogen#infect()
 
 set backupdir=~/.vim/backup     " directory to save backup files
 set undodir=~/.vim/undo         " directory to save undo buffers
@@ -14,8 +13,11 @@ filetype plugin indent on       " enable filetypes and indentation
 syntax enable                   " enable syntax highlight
 
 " MAIN SETTINGS
+set hidden                      " allow unsaved background buffers
 set autoindent                  " autoindent always
 set autowrite                   " autowrite file modifications
+set autoread                    " automatically reload external modifications
+set history=10000               " remember more commands and search history
 set undofile                    " save undos buffer to file
 set undolevels=100              " max number of changes to undo
 set undoreload=10000            " max number of lines to reload for undo
@@ -31,6 +33,12 @@ set incsearch                   " do incremental searching automatically
 set ignorecase                  " searches are case insensitive...
 set smartcase                   " ...unless they contain uppercase letters
 set formatoptions+=j            " remove comments when joining lines
+set nojoinspaces                " only one space when joining punctuation-ended lines
+set foldmethod=manual           " set folding to manual, never autofold
+set nofoldenable                " disable folding
+
+" prevent vim from clobbering scrollback buffer
+set t_ti= t_te=
 
 " completion options
 set complete=.,b,u,]
@@ -48,7 +56,7 @@ colorscheme hybrid
 
 " vimdiff
 if &diff
-    set diffopt=filler,foldcolumn:0
+    set diffopt=filler
 endif
 
 " show title
