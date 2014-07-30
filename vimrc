@@ -199,7 +199,3 @@ let g:UltiSnipsExpandTrigger="<c-j>"
 
 " Vim2Hs
 let g:haskell_conceal = 0
-
-" YouCompleteMe
-let g:ycm_auto_trigger = 0
-nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
