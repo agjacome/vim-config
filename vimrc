@@ -5,9 +5,10 @@ set encoding=utf-8              " always use utf
 filetype off
 call pathogen#infect()
 
-set backupdir=~/.vim/backup     " directory to save backup files
+set directory=/tmp              " directory to save swap files
 set undodir=~/.vim/undo         " directory to save undo buffers
-set directory=~/.vim/temp       " directory to save swap files
+set nobackup                    " do not create any...
+set nowritebackup               " ...backup files
 
 filetype plugin indent on       " enable filetypes and indentation
 syntax enable                   " enable syntax highlight

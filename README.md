@@ -23,7 +23,7 @@ Clone repository with all its submodules:
 
 Create required directories:
 
-    mkdir $HOME/.vim/backup $HOME/.vim/temp $HOME/.vim/undo
+    mkdir $HOME/.vim/undo
 
 Basic Usage
 -----------
