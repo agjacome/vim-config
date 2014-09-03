@@ -81,6 +81,8 @@ set listchars+=extends:❯        " char to show when line continues right
 set listchars+=precedes:❮       " char to show when line continues left
 set fillchars+=vert:│           " vertical splits less gap between bars
 
+set tags=./.tags,.tags,./tags,tags;/
+
 if has("autocmd")
     " makefiles should use real tabs, not spaces
     au FileType make set noexpandtab
