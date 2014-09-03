@@ -205,6 +205,3 @@ let g:syntastic_mode_map = { 'mode': 'passive' }
 "
 " UltiSnips
 let g:UltiSnipsExpandTrigger="<c-j>"
-
-" Vim2Hs
-let g:haskell_conceal = 0
