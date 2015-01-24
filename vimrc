@@ -204,7 +204,9 @@ let g:scala_sort_across_groups=1
 
 " Syntastic
 let g:syntastic_mode_map = { 'mode': 'passive' }
-"
+map <silent> <Leader>e :Errors<CR>
+map <Leader>s :SyntasticToggleMode<CR>
+
 " UltiSnips
 let g:UltiSnipsExpandTrigger="<c-j>"
 
