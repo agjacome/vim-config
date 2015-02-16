@@ -188,6 +188,11 @@ nnoremap <leader>d "=strftime("%d %b %Y %H:%M")<CR>p
 nnoremap <leader><leader> <c-^>
 
 " PLUGIN SETTINGS
+" Airline
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#whitespace#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
+
 " EasyAlign
 vmap <Enter>   <Plug>(EasyAlign)
 nmap <Leader>a <Plug>(EasyAlign)
@@ -200,11 +205,6 @@ let g:NERDSpaceDelims = 1
 " NerdTree
 map <Leader>f :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-
-" Airline
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#whitespace#enabled = 1
-let g:airline#extensions#tabline#enabled = 1
 
 " Scala
 let g:scala_sort_across_groups = 1
