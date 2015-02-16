@@ -37,6 +37,7 @@ set formatoptions+=j            " remove comments when joining lines
 set nojoinspaces                " only one space when joining punctuation-ended lines
 set foldmethod=manual           " set folding to manual, never autofold
 set nofoldenable                " disable folding
+set updatetime=1000             " write swap file and call CursorHold after 1s of inactivity
 
 " prevent vim from clobbering scrollback buffer
 set t_ti= t_te=
@@ -83,15 +84,14 @@ set fillchars+=vert:│           " vertical splits less gap between bars
 
 set tags=./.tags,.tags,./tags,tags;/
 
-if has("autocmd")
-    " makefiles should use real tabs, not spaces
-    au FileType make set noexpandtab
-    " restore cursor position when reopening a file
-    autocmd BufReadPost *
-        \ if line("'\"") > 0 && line("'\"") <= line("$") |
-        \     exe "normal g`\"" |
-        \ endif
-endif
+" restore cursor position when reopening a file
+autocmd BufReadPost *
+    \ if line("'\"") > 0 && line("'\"") <= line("$") |
+    \     exe "normal g`\"" |
+    \ endif
+
+" check external modifications when inactive
+autocmd CursorHold * checktime
 
 " FUNCTIONS
 function! ToggleColours()
