@@ -196,9 +196,6 @@ let g:NERDSpaceDelims = 1
 map <Leader>f :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
-" Powerline
-set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
-
 " Scala
 let g:scala_sort_across_groups=1
 
