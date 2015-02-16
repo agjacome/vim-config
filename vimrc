@@ -38,6 +38,7 @@ set nojoinspaces                " only one space when joining punctuation-ended 
 set foldmethod=manual           " set folding to manual, never autofold
 set nofoldenable                " disable folding
 set updatetime=1000             " write swap file and call CursorHold after 1s of inactivity
+set timeoutlen=300
 
 " prevent vim from clobbering scrollback buffer
 set t_ti= t_te=
@@ -196,8 +197,16 @@ let g:NERDSpaceDelims = 1
 map <Leader>f :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
+" Airline
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#whitespace#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+
 " Scala
-let g:scala_sort_across_groups=1
+let g:scala_sort_across_groups = 1
 
 " Syntastic
 let g:syntastic_mode_map = { 'mode': 'passive' }
