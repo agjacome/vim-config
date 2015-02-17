@@ -98,8 +98,10 @@ autocmd CursorHold * checktime
 function! ToggleColours()
     if g:colors_name == 'hybrid'
         colorscheme hybrid-light
+        AirlineTheme hybrid
     else
         colorscheme hybrid
+        AirlineTheme hybrid
     endif
 endfunction
 
