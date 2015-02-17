@@ -192,6 +192,7 @@ nnoremap <leader><leader> <c-^>
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#whitespace#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
 
 " EasyAlign
 vmap <Enter>   <Plug>(EasyAlign)
