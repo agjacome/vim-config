@@ -211,6 +211,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 
 " Scala
 let g:scala_sort_across_groups = 1
+let g:scala_first_party_namespaces = 'es.uvigo.*'
 
 " Syntastic
 let g:syntastic_mode_map = { 'mode': 'passive' }
