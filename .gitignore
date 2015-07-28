@@ -1,1 +1,3 @@
 undo
+bundle/*
+!bundle/vundle

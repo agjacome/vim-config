@@ -1,17 +1,40 @@
 set nocompatible                " vim defaults instead of vi
 set encoding=utf-8              " always use utf
 
-" load submodules via pathogen
 filetype off
-call pathogen#infect()
+
+" vim plugins, managed by vundle
+set rtp+=~/.vim/bundle/vundle
+call vundle#begin()
+
+Plugin 'gmarik/vundle'
+
+Plugin 'bling/vim-airline'
+Plugin 'dag/vim2hs'
+Plugin 'derekwyatt/vim-scala'
+Plugin 'eagletmt/ghcmod-vim'
+Plugin 'honza/vim-snippets'
+Plugin 'junegunn/vim-easy-align'
+Plugin 'kien/ctrlp.vim'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
+Plugin 'sirver/ultisnips'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-surround'
+Plugin 'vim-scripts/visincr'
+
+call vundle#end()
+
+filetype plugin indent on       " enable filetypes and indentation
+syntax enable                   " enable syntax highlight
 
 set directory=/tmp              " directory to save swap files
 set undodir=~/.vim/undo         " directory to save undo buffers
 set nobackup                    " do not create any...
 set nowritebackup               " ...backup files
-
-filetype plugin indent on       " enable filetypes and indentation
-syntax enable                   " enable syntax highlight
 
 " MAIN SETTINGS
 set hidden                      " allow unsaved background buffers
