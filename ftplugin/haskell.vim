@@ -1,5 +1,3 @@
-setlocal omnifunc=necoghc#omnifunc
-
 setlocal tabstop=8
 setlocal expandtab
 setlocal softtabstop=4

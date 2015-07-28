@@ -9,13 +9,18 @@ call vundle#begin()
 
 Plugin 'gmarik/vundle'
 
+Plugin 'adimit/prolog.vim'
 Plugin 'bling/vim-airline'
 Plugin 'dag/vim2hs'
 Plugin 'derekwyatt/vim-scala'
 Plugin 'eagletmt/ghcmod-vim'
+Plugin 'elzr/vim-json'
+Plugin 'flazz/vim-colorschemes'
 Plugin 'honza/vim-snippets'
 Plugin 'junegunn/vim-easy-align'
+Plugin 'justinmk/vim-sneak'
 Plugin 'kien/ctrlp.vim'
+Plugin 'plasticboy/vim-markdown'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'

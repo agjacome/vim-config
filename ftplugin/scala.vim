@@ -1,6 +1,8 @@
 setlocal formatoptions=crqj
 setlocal textwidth=80
 
+setlocal wildignore+=*/target/*
+
 setlocal expandtab
 setlocal tabstop=2
 setlocal softtabstop=2

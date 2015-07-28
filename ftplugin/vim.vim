@@ -1,6 +1,4 @@
-" ignore bundles in command-t
-setlocal wildignore+=*/bundle/*
+setlocal wildignore+=*/bundle/*,*/undo/*
 
-" re-source on changes
 au BufWritePost */.vimrc source %
 au BufWritePost */vimrc  source %
