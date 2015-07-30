@@ -32,6 +32,7 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
+Plugin 'vim-scripts/gitignore'
 Plugin 'vim-scripts/visincr'
 
 call vundle#end()
