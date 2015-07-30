@@ -11,6 +11,7 @@ Plugin 'gmarik/vundle'
 
 Plugin 'adimit/prolog.vim'
 Plugin 'bling/vim-airline'
+Plugin 'chrisbra/csv.vim'
 Plugin 'dag/vim2hs'
 Plugin 'derekwyatt/vim-scala'
 Plugin 'eagletmt/ghcmod-vim'
