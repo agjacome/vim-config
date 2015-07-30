@@ -102,7 +102,7 @@ set ruler                       " show cursor position all time
 set showcmd                     " display incomplete commands
 set laststatus=2                " always show statusline
 set scrolloff=10                " provide some context
-set cursorline                  " highlight current line
+" set cursorline                " highlight current line
 
 set list                        " show whitespace characters
 set listchars=""                " reset whitespace characters list
@@ -124,8 +124,11 @@ autocmd BufReadPost *
 autocmd CursorHold * checktime
 
 " FUNCTIONS
-function! ToggleColours()
+function! ToggleColors()
     if g:colors_name == 'hybrid'
+        colorscheme off
+        AirlineTheme zenburn
+    elseif g:colors_name == 'off'
         colorscheme hybrid-light
         AirlineTheme hybrid
     else
@@ -207,7 +210,7 @@ let mapleader=","
 
 map <Leader>m :make<CR>
 map <Leader>k :KillWhitespace<CR>
-map <F3> :call ToggleColours()<CR>
+map <F3> :call ToggleColors()<CR>
 map <F4> :call ToggleNumbers()<CR>
 map <F6> :call ToggleHex()<CR>
 map <F8> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
