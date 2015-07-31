@@ -69,8 +69,9 @@ set formatoptions+=j            " remove comments when joining lines
 set nojoinspaces                " only one space when joining punctuation-ended lines
 set foldmethod=manual           " set folding to manual, never autofold
 set nofoldenable                " disable folding
-set updatetime=1000             " write swap file and call CursorHold after 1s of inactivity
-set timeoutlen=300
+set updatetime=1000             " wait time to write swap and call CursorHold (in ms)
+set timeoutlen=300              " wait time for a key code to complete (in ms)
+set lazyredraw                  " do not update display while executing macros
 
 " prevent vim from clobbering scrollback buffer
 set t_ti= t_te=
@@ -99,6 +100,7 @@ set title
 set titleold=""
 set titlestring="vim: %F"
 
+set shortmess+=I                " disable startup message
 set relativenumber              " always show relative line numbers
 set numberwidth=2               " number of digits for line numbers
 set ruler                       " show cursor position all time
@@ -111,9 +113,11 @@ set list                        " show whitespace characters
 set listchars=""                " reset whitespace characters list
 set listchars=tab:▸\            " tabs shown as right arrow and spaces
 set listchars+=trail:⋅          " trailing whitespaces shown as dots
+set listchars+=nbsp:⋅           " non-breakable spaces shown as dots
 set listchars+=extends:❯        " char to show when line continues right
 set listchars+=precedes:❮       " char to show when line continues left
 set fillchars+=vert:│           " vertical splits less gap between bars
+let &showbreak = '↳ '           " char to show at start of wrapped lines
 
 set tags=./.tags,.tags,./tags,tags;/
 
