@@ -245,6 +245,7 @@ let g:NERDCommentWholeLinesInVMode = 1
 let g:NERDSpaceDelims = 1
 
 " NerdTree
+let NERDTreeShowHidden = 1
 map <Leader>f :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
