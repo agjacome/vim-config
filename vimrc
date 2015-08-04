@@ -236,6 +236,11 @@ let g:airline#extensions#whitespace#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 
+" Ctrl-P
+let g:ctrlp_user_command = [ '.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard' ]
+let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:30'
+let g:ctrlp_working_path_mode = 'r'
+
 " EasyAlign
 vmap <Enter>   <Plug>(EasyAlign)
 nmap <Leader>a <Plug>(EasyAlign)
