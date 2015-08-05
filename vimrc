@@ -229,6 +229,7 @@ cnoremap %% <C-R>=expand('%:h').'/'<cr>
 nnoremap <CR> :nohlsearch<CR>
 nnoremap <leader>d "=strftime("%d %b %Y %H:%M")<CR>p
 nnoremap <leader>b <c-^>
+nnoremap Q <nop>
 
 " PLUGIN SETTINGS
 " Airline
