@@ -215,6 +215,7 @@ inoremap [<Space> [ ]<Left>
 inoremap (<Space> ( )<Left>
 
 let mapleader=","
+noremap ,, ,
 
 map <Leader>m :make<CR>
 map <Leader>k :KillWhitespace<CR>
@@ -227,7 +228,7 @@ cnoremap %% <C-R>=expand('%:h').'/'<cr>
 
 nnoremap <CR> :nohlsearch<CR>
 nnoremap <leader>d "=strftime("%d %b %Y %H:%M")<CR>p
-nnoremap <leader><leader> <c-^>
+nnoremap <leader>b <c-^>
 
 " PLUGIN SETTINGS
 " Airline
