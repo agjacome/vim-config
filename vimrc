@@ -74,6 +74,7 @@ set nofoldenable                " disable folding
 set updatetime=1000             " wait time to write swap and call CursorHold (in ms)
 set timeoutlen=300              " wait time for a key code to complete (in ms)
 set lazyredraw                  " do not update display while executing macros
+set magic                       " enable magic mode for regular expressions
 
 " prevent vim from clobbering scrollback buffer
 set t_ti= t_te=
