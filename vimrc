@@ -87,7 +87,7 @@ set pumheight=10
 
 " colorscheme
 if $TERM =~ "-256color"
-    set t_Co=256
+    set t_ut= t_Co=256
     let g:hybrid_use_Xresources = 1
 endif
 set background=dark
@@ -219,6 +219,7 @@ inoremap (<Space> ( )<Left>
 let mapleader=","
 noremap ,, ,
 
+map <silent> <Leader>r :redraw!<CR>
 map <Leader>m :make<CR>
 map <Leader>k :KillWhitespace<CR>
 map <F3> :call ToggleColors()<CR>
@@ -229,8 +230,8 @@ map <F8> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 
 nnoremap <CR> :nohlsearch<CR>
-nnoremap <leader>d "=strftime("%d %b %Y %H:%M")<CR>p
-nnoremap <leader>b <c-^>
+nnoremap <Leader>d "=strftime("%d %b %Y %H:%M")<CR>p
+nnoremap <Leader>b <c-^>
 nnoremap Q <nop>
 
 " PLUGIN SETTINGS
@@ -241,9 +242,11 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 
 " Ctrl-P
+let g:ctrlp_working_path_mode = 'r'
 let g:ctrlp_user_command = [ '.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard' ]
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:30'
-let g:ctrlp_working_path_mode = 'r'
+let g:ctrlp_show_hidden = 1
+let g:ctrlp_max_files = 0
 
 " EasyAlign
 vmap <Enter>   <Plug>(EasyAlign)
