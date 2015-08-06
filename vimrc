@@ -12,10 +12,11 @@ Plugin 'gmarik/vundle'
 Plugin 'adimit/prolog.vim'
 Plugin 'bling/vim-airline'
 Plugin 'chrisbra/csv.vim'
-Plugin 'dag/vim2hs'
 Plugin 'derekwyatt/vim-scala'
 Plugin 'eagletmt/ghcmod-vim'
+Plugin 'eagletmt/neco-ghc'
 Plugin 'elzr/vim-json'
+Plugin 'enomsg/vim-haskellconcealplus'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'honza/vim-snippets'
 Plugin 'junegunn/vim-easy-align'
@@ -35,6 +36,7 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
+Plugin 'twinside/vim-hoogle'
 Plugin 'vim-scripts/gitignore'
 Plugin 'vim-scripts/visincr'
 
@@ -237,7 +239,7 @@ map <F8> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 
-nnoremap <CR> :nohlsearch<CR>
+nnoremap <silent><CR> :nohlsearch<CR>
 nnoremap <Leader>d "=strftime("%d %b %Y %H:%M")<CR>p
 nnoremap <Leader>b <c-^>
 nnoremap Q <nop>
@@ -259,6 +261,28 @@ let g:ctrlp_max_files = 0
 " EasyAlign
 vmap <Enter>   <Plug>(EasyAlign)
 nmap <Leader>a <Plug>(EasyAlign)
+
+" GHCMod
+let g:ghcmod_use_basedir = getcwd()
+nmap <silent><Leader>ht :GhcModType<CR>
+nmap <silent><Leader>hT :GhcModTypeInsert<CR>
+map  <silent><Leader><CR> :nohlsearch<CR>:GhcModTypeClear<CR>
+
+" HaskellConcealPlus
+let g:haskell_conceal_wide = 1
+let g:haskell_conceal_enumerations = 1
+let hscoptions="𝐒𝐓𝐄𝐌xRtB𝔻"
+hi clear Conceal
+
+" Hoogle
+nnoremap <silent><Leader>hh :Hoogle<CR>
+nnoremap <Leader>hH :Hoogle
+nnoremap <silent><Leader>hi :HoogleInfo<CR>
+nnoremap <Leader>hI :HoogleInfo
+nnoremap <silent><Leader>hz :HoogleClose<CR>
+
+" Neco GHC
+let g:necoghc_enable_detailed_browse = 1
 
 " NerdCommenter
 let g:NERDCreateDefaultMappings = 1
@@ -291,7 +315,6 @@ map <Leader>s :SyntasticToggleMode<CR>
 
 " UltiSnips
 let g:UltiSnipsExpandTrigger="<c-j>"
-
-" Vim2Hs
-let g:haskell_conceal_enumerations = 0
-hi clear Conceal
+let g:UltiSnipsForwardTrigger="<c-b>"
+let g:UltiSnipsBackwardTrigger="<c-z>"
+let g:UltiSnipsEditSplit="vertical"
