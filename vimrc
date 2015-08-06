@@ -259,8 +259,18 @@ let g:NERDSpaceDelims = 1
 
 " NerdTree
 let NERDTreeShowHidden = 1
-map <Leader>f :NERDTreeToggle<CR>
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+let NERDTreeQuitOnOpen = 1
+
+function! ToggleFindNERD()
+    if exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
+        exec ':NERDTreeToggle'
+    else
+        exec ':NERDTreeFind'
+    endif
+endfunction
+
+map <silent> <Leader>f :call ToggleFindNERD()<CR>
+map <silent> <Leader>F :NERDTreeToggle<CR>
 
 " Scala
 let g:scala_sort_across_groups = 1
