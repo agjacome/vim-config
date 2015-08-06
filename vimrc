@@ -185,7 +185,7 @@ function! ToggleHex()
     let &modifiable=l:oldmodifiable
 endfunction
 
-command! KillWhitespace :normal :%s/ *$//g<cr><c-o><cr>
+command! KillWhitespace :normal :%s/\s\+$//g<cr><c-o><cr>
 
 " MAPPINGS
 nnoremap q: <Nop>
@@ -197,6 +197,12 @@ nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
+
+" open split windows in places with Leader+s[hjkl]
+nmap <Leader>sh :leftabove vnew<CR>
+nmap <Leader>sl :rightbelow vnew<CR>
+nmap <Leader>sk :leftabove new<CR>
+nmap <Leader>sj :rightbelow new<CR>
 
 " navigation between buffers (Tab and Shift+Tab)
 :nnoremap <Tab> :bnext<CR>
@@ -219,9 +225,10 @@ inoremap (<Space> ( )<Left>
 let mapleader=","
 noremap ,, ,
 
-map <silent> <Leader>r :redraw!<CR>
 map <Leader>m :make<CR>
 map <Leader>k :KillWhitespace<CR>
+map <Leader>r :redraw!<CR>
+
 map <F3> :call ToggleColors()<CR>
 map <F4> :call ToggleNumbers()<CR>
 map <F6> :call ToggleHex()<CR>
