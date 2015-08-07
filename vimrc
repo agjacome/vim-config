@@ -270,7 +270,7 @@ nmap <silent><Leader>hT :GhcModTypeInsert<CR>
 map  <silent><Leader><CR> :nohlsearch<CR>:GhcModTypeClear<CR>
 
 " HaskellConcealPlus
-let g:hscoptions="𝐒𝐓𝐄𝐌tB𝔻"
+let g:hscoptions="𝐒𝐓𝐄𝐌stB𝔻"
 hi clear Conceal
 
 " Hoogle
