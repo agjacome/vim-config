@@ -203,10 +203,10 @@ nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
 " open split windows in places with Leader+s[hjkl]
-nmap <Leader>sh :leftabove vnew<CR>
-nmap <Leader>sl :rightbelow vnew<CR>
-nmap <Leader>sk :leftabove new<CR>
-nmap <Leader>sj :rightbelow new<CR>
+nmap <silent><Leader>H :leftabove vnew<CR>
+nmap <silent><Leader>L :rightbelow vnew<CR>
+nmap <silent><Leader>K :leftabove new<CR>
+nmap <silent><Leader>J :rightbelow new<CR>
 
 " navigation between buffers (Tab and Shift+Tab)
 :nnoremap <Tab> :bnext<CR>
@@ -230,8 +230,8 @@ let mapleader=","
 noremap ,, ,
 
 map <Leader>m :make<CR>
-map <Leader>k :KillWhitespace<CR>
-map <Leader>r :redraw!<CR>
+map <silent><Leader>k :KillWhitespace<CR>
+map <silent><Leader>r :redraw!<CR>
 
 map <F3> :call ToggleColors()<CR>
 map <F4> :call ToggleNumbers()<CR>
@@ -241,8 +241,8 @@ map <F8> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 
 nnoremap <silent><CR> :nohlsearch<CR>
-nnoremap <Leader>d "=strftime("%d %b %Y %H:%M")<CR>p
-nnoremap <Leader>b <c-^>
+nnoremap <silent><Leader>d "=strftime("%d %b %Y %H:%M")<CR>p
+nnoremap <silent><Leader>b <c-^>
 nnoremap Q <nop>
 
 " PLUGIN SETTINGS
@@ -270,8 +270,17 @@ nmap <silent><Leader>hT :GhcModTypeInsert<CR>
 map  <silent><Leader><CR> :nohlsearch<CR>:GhcModTypeClear<CR>
 
 " HaskellConcealPlus
-let g:hscoptions="𝐒𝐓𝐄𝐌stB𝔻"
-hi clear Conceal
+function! ToggleConceal()
+    if &conceallevel >= 1
+        set conceallevel=0 concealcursor=
+    else
+        set conceallevel=1 concealcursor=
+    endif
+endfunction
+
+set conceallevel=1 concealcursor=
+let g:hscoptions="𝐒𝐓𝐄𝐌AstB𝔻"
+map <silent><Leader>c :call ToggleConceal()<CR>
 
 " Hoogle
 nnoremap <silent><Leader>hh :Hoogle<CR>
@@ -300,8 +309,8 @@ function! ToggleFindNERD()
     endif
 endfunction
 
-map <silent> <Leader>f :call ToggleFindNERD()<CR>
-map <silent> <Leader>F :NERDTreeToggle<CR>
+map <silent><Leader>f :call ToggleFindNERD()<CR>
+map <silent><Leader>F :NERDTreeToggle<CR>
 
 " Scala
 let g:scala_sort_across_groups = 1
@@ -309,8 +318,8 @@ let g:scala_first_party_namespaces = 'es.uvigo.*'
 
 " Syntastic
 let g:syntastic_mode_map = { 'mode': 'passive' }
-map <silent> <Leader>e :Errors<CR>
-map <Leader>s :SyntasticToggleMode<CR>
+map <silent><Leader>e :Errors<CR>
+map <silent><Leader>S :SyntasticToggleMode<CR>
 
 " UltiSnips
 let g:UltiSnipsExpandTrigger="<c-j>"
