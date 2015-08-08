@@ -264,8 +264,8 @@ let g:ctrlp_show_hidden = 1
 let g:ctrlp_max_files = 0
 
 " EasyAlign
-vnoremap <Enter>   <Plug>(EasyAlign)
-nnoremap <leader>a <Plug>(EasyAlign)
+vmap <Enter>   <Plug>(EasyAlign)
+nmap <leader>a <Plug>(EasyAlign)
 
 " GHCMod
 let g:ghcmod_use_basedir = getcwd()
@@ -320,7 +320,7 @@ let g:scala_first_party_namespaces = 'es.uvigo.*'
 
 " Syntastic
 let g:syntastic_mode_map = { 'mode': 'passive' }
-let g:syntastic_hs_checkers = ['hlint']
+let g:syntastic_haskell_checkers = ['hlint']
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 noremap <silent><leader>e :Errors<cr>
