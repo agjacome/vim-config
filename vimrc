@@ -189,9 +189,12 @@ function! ToggleHex()
     let &modifiable=l:oldmodifiable
 endfunction
 
-command! KillWhitespace :normal :%s/\s\+$//g<cr><c-o><cr>
+command! KillWhitespace :normal :%s/\s\+$//ge<cr><c-o><cr>
 
 " MAPPINGS
+let mapleader=","
+noremap ,, ,
+
 nnoremap q: <Nop>
 nnoremap q/ <Nop>
 nnoremap q? <Nop>
@@ -202,47 +205,48 @@ nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
-" open split windows in places with Leader+s[hjkl]
-nmap <silent><Leader>H :leftabove vnew<CR>
-nmap <silent><Leader>L :rightbelow vnew<CR>
-nmap <silent><Leader>K :leftabove new<CR>
-nmap <silent><Leader>J :rightbelow new<CR>
+" open split windows in places with leader+[HJKL]
+nnoremap <silent><leader>H :leftabove vnew<cr>
+nnoremap <silent><leader>L :rightbelow vnew<cr>
+nnoremap <silent><leader>K :leftabove new<cr>
+nnoremap <silent><leader>J :rightbelow new<cr>
 
 " navigation between buffers (Tab and Shift+Tab)
-:nnoremap <Tab> :bnext<CR>
-:nnoremap <S-Tab> :bprevious<CR>
+nnoremap <silent><tab> :bnext<cr>
+nnoremap <silent><s-tab> :bprevious<cr>
 
 " disable cursor keys in normal mode (print 'no!' in cmdline)
-map <Left>  :echo "no!"<CR>
-map <Right> :echo "no!"<CR>
-map <Up>    :echo "no!"<CR>
-map <Down>  :echo "no!"<CR>
+noremap <Left>  :echo "no!"<cr>
+noremap <Right> :echo "no!"<cr>
+noremap <Up>    :echo "no!"<cr>
+noremap <Down>  :echo "no!"<cr>
 
 " simple delimitmate
-inoremap {<CR> {<CR>}<C-o>O
-inoremap [<CR> [<CR>]<C-o>O
-inoremap (<CR> (<CR>)<C-o>O
+inoremap {<cr> {<cr>}<c-o>O
+inoremap [<cr> [<cr>]<c-o>O
+inoremap (<cr> (<cr>)<c-o>O
 inoremap {<Space> { }<Left>
 inoremap [<Space> [ ]<Left>
 inoremap (<Space> ( )<Left>
 
-let mapleader=","
-noremap ,, ,
+noremap <leader>m :make<cr>
+noremap <silent><leader>k :KillWhitespace<cr>
+noremap <silent><leader>r :redraw!<cr>
 
-map <Leader>m :make<CR>
-map <silent><Leader>k :KillWhitespace<CR>
-map <silent><Leader>r :redraw!<CR>
+noremap <f5> :call ToggleColors()<cr>
+noremap <f6> :call ToggleNumbers()<cr>
+noremap <f7> :call ToggleHex()<cr>
+noremap <f8> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<cr>
 
-map <F3> :call ToggleColors()<CR>
-map <F4> :call ToggleNumbers()<CR>
-map <F6> :call ToggleHex()<CR>
-map <F8> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+cnoremap <c-j> <t_kd>
+cnoremap <c-k> <t_ku>
+cnoremap <c-a> <home>
+cnoremap <c-e> <end>
+cnoremap %% <c-r>=expand('%:p:h').'/'<cr>
 
-cnoremap %% <C-R>=expand('%:h').'/'<cr>
-
-nnoremap <silent><CR> :nohlsearch<CR>
-nnoremap <silent><Leader>d "=strftime("%d %b %Y %H:%M")<CR>p
-nnoremap <silent><Leader>b <c-^>
+nnoremap <silent><cr> :nohlsearch<cr>
+nnoremap <silent><leader>d "=strftime("%d %b %Y %H:%M")<cr>p
+nnoremap <silent><leader>b <c-^>
 nnoremap Q <nop>
 
 " PLUGIN SETTINGS
@@ -260,14 +264,14 @@ let g:ctrlp_show_hidden = 1
 let g:ctrlp_max_files = 0
 
 " EasyAlign
-vmap <Enter>   <Plug>(EasyAlign)
-nmap <Leader>a <Plug>(EasyAlign)
+vnoremap <Enter>   <Plug>(EasyAlign)
+nnoremap <leader>a <Plug>(EasyAlign)
 
 " GHCMod
 let g:ghcmod_use_basedir = getcwd()
-nmap <silent><Leader>ht :GhcModType<CR>
-nmap <silent><Leader>hT :GhcModTypeInsert<CR>
-map  <silent><Leader><CR> :nohlsearch<CR>:GhcModTypeClear<CR>
+noremap <silent><leader>ht :GhcModType<cr>
+noremap <silent><leader>hT :GhcModTypeInsert<cr>
+noremap <silent><leader><cr> :nohlsearch<cr>:GhcModTypeClear<cr>
 
 " HaskellConcealPlus
 function! ToggleConceal()
@@ -280,14 +284,12 @@ endfunction
 
 set conceallevel=1 concealcursor=
 let g:hscoptions="𝐒𝐓𝐄𝐌AstB𝔻"
-map <silent><Leader>c :call ToggleConceal()<CR>
+noremap <silent><leader>c :call ToggleConceal()<cr>
 
 " Hoogle
-nnoremap <silent><Leader>hh :Hoogle<CR>
-nnoremap <Leader>hH :Hoogle
-nnoremap <silent><Leader>hi :HoogleInfo<CR>
-nnoremap <Leader>hI :HoogleInfo
-nnoremap <silent><Leader>hz :HoogleClose<CR>
+noremap <silent><leader>hh :Hoogle<cr>
+noremap <silent><leader>hi :HoogleInfo<cr>
+noremap <silent><leader>hz :HoogleClose<cr>
 
 " Neco GHC
 let g:necoghc_enable_detailed_browse = 1
@@ -309,8 +311,8 @@ function! ToggleFindNERD()
     endif
 endfunction
 
-map <silent><Leader>f :call ToggleFindNERD()<CR>
-map <silent><Leader>F :NERDTreeToggle<CR>
+noremap <silent><leader>f :call ToggleFindNERD()<cr>
+noremap <silent><leader>F :NERDTreeToggle<cr>
 
 " Scala
 let g:scala_sort_across_groups = 1
@@ -318,8 +320,11 @@ let g:scala_first_party_namespaces = 'es.uvigo.*'
 
 " Syntastic
 let g:syntastic_mode_map = { 'mode': 'passive' }
-map <silent><Leader>e :Errors<CR>
-map <silent><Leader>S :SyntasticToggleMode<CR>
+let g:syntastic_hs_checkers = ['hlint']
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+noremap <silent><leader>e :Errors<cr>
+noremap <silent><leader>S :SyntasticToggleMode<cr>
 
 " UltiSnips
 let g:UltiSnipsExpandTrigger="<c-j>"
