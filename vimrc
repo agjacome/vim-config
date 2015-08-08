@@ -264,8 +264,8 @@ let g:ctrlp_show_hidden = 1
 let g:ctrlp_max_files = 0
 
 " EasyAlign
-vmap <Enter>   <Plug>(EasyAlign)
-nmap <leader>a <Plug>(EasyAlign)
+vmap <Enter>   <Plug>(LiveEasyAlign)
+nmap <leader>a <Plug>(LiveEasyAlign)
 
 " GHCMod
 let g:ghcmod_use_basedir = getcwd()
