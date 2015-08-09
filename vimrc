@@ -96,6 +96,7 @@ if $TERM =~ "-256color"
 endif
 set background=dark
 colorscheme hybrid
+highlight clear conceal
 
 " vimdiff
 if &diff
@@ -142,12 +143,15 @@ function! ToggleColors()
     if g:colors_name == 'hybrid'
         colorscheme off
         AirlineTheme zenburn
+        highlight clear conceal
     elseif g:colors_name == 'off'
         colorscheme hybrid-light
         AirlineTheme hybrid
+        highlight clear conceal
     else
         colorscheme hybrid
         AirlineTheme hybrid
+        highlight clear conceal
     endif
 endfunction
 
@@ -187,6 +191,14 @@ function! ToggleHex()
     let &mod=l:modified
     let &readonly=l:oldreadonly
     let &modifiable=l:oldmodifiable
+endfunction
+
+function! ToggleConceal()
+    if &conceallevel >= 1
+        set conceallevel=0 concealcursor=
+    else
+        set conceallevel=1 concealcursor=
+    endif
 endfunction
 
 command! KillWhitespace :normal :%s/\s\+$//ge<cr><c-o><cr>
@@ -233,6 +245,9 @@ noremap <leader>m :make<cr>
 noremap <silent><leader>k :KillWhitespace<cr>
 noremap <silent><leader>r :redraw!<cr>
 
+nnoremap <silent><leader>p :set invpaste<cr>
+nnoremap <silent><leader>c :call ToggleConceal()<cr>
+
 noremap <f5> :call ToggleColors()<cr>
 noremap <f6> :call ToggleNumbers()<cr>
 noremap <f7> :call ToggleHex()<cr>
@@ -274,17 +289,8 @@ noremap <silent><leader>hT :GhcModTypeInsert<cr>
 noremap <silent><leader><cr> :nohlsearch<cr>:GhcModTypeClear<cr>
 
 " HaskellConcealPlus
-function! ToggleConceal()
-    if &conceallevel >= 1
-        set conceallevel=0 concealcursor=
-    else
-        set conceallevel=1 concealcursor=
-    endif
-endfunction
-
 set conceallevel=1 concealcursor=
 let g:hscoptions="𝐒𝐓𝐄𝐌AstB𝔻"
-noremap <silent><leader>c :call ToggleConceal()<cr>
 
 " Hoogle
 noremap <silent><leader>hh :Hoogle<cr>
