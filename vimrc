@@ -25,6 +25,7 @@ Plugin 'justinmk/vim-sneak'
 Plugin 'kien/ctrlp.vim'
 Plugin 'latex-box-team/latex-box'
 Plugin 'lnl7/vim-nix'
+Plugin 'mxw/vim-jsx'
 Plugin 'pbrisbin/vim-colors-off'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'scrooloose/nerdcommenter'
@@ -298,6 +299,9 @@ noremap <silent><leader>hh :Hoogle<cr>
 noremap <silent><leader>hi :HoogleInfo<cr>
 noremap <silent><leader>hz :HoogleClose<cr>
 
+" JSX
+let g:jsx_ext_required = 0
+
 " Neco GHC
 let g:necoghc_enable_detailed_browse = 1
 
@@ -334,7 +338,7 @@ noremap <silent><leader>e :Errors<cr>
 noremap <silent><leader>S :SyntasticToggleMode<cr>
 
 " UltiSnips
-let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsForwardTrigger="<c-b>"
 let g:UltiSnipsBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical"
