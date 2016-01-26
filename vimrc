@@ -25,6 +25,7 @@ Plugin 'justinmk/vim-sneak'
 Plugin 'kien/ctrlp.vim'
 Plugin 'latex-box-team/latex-box'
 Plugin 'lnl7/vim-nix'
+Plugin 'mattn/emmet-vim'
 Plugin 'mxw/vim-jsx'
 Plugin 'pbrisbin/vim-colors-off'
 Plugin 'plasticboy/vim-markdown'
@@ -284,6 +285,9 @@ let g:ctrlp_max_files = 0
 vmap <Enter>   <Plug>(LiveEasyAlign)
 nmap <leader>a <Plug>(LiveEasyAlign)
 
+" Emmet
+let g:user_emmet_mode = 'a'
+
 " GHCMod
 let g:ghcmod_use_basedir = getcwd()
 noremap <silent><leader>ht :GhcModType<cr>
@@ -298,9 +302,6 @@ let g:hscoptions="𝐒𝐓𝐄𝐌AstB𝔻"
 noremap <silent><leader>hh :Hoogle<cr>
 noremap <silent><leader>hi :HoogleInfo<cr>
 noremap <silent><leader>hz :HoogleClose<cr>
-
-" JSX
-let g:jsx_ext_required = 0
 
 " Neco GHC
 let g:necoghc_enable_detailed_browse = 1
@@ -338,7 +339,7 @@ noremap <silent><leader>e :Errors<cr>
 noremap <silent><leader>S :SyntasticToggleMode<cr>
 
 " UltiSnips
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsForwardTrigger="<c-b>"
-let g:UltiSnipsBackwardTrigger="<c-z>"
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsForwardTrigger="<c-j>"
+let g:UltiSnipsBackwardTrigger="<c-k>"
 let g:UltiSnipsEditSplit="vertical"
