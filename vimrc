@@ -10,7 +10,6 @@ call vundle#begin()
 Plugin 'gmarik/vundle'
 
 Plugin 'adimit/prolog.vim'
-Plugin 'bling/vim-airline'
 Plugin 'chrisbra/csv.vim'
 Plugin 'derekwyatt/vim-scala'
 Plugin 'eagletmt/ghcmod-vim'
@@ -40,6 +39,8 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'twinside/vim-hoogle'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-scripts/gitignore'
 Plugin 'vim-scripts/visincr'
 
