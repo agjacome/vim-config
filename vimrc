@@ -26,6 +26,7 @@ Plugin 'latex-box-team/latex-box'
 Plugin 'lnl7/vim-nix'
 Plugin 'mattn/emmet-vim'
 Plugin 'mxw/vim-jsx'
+Plugin 'pangloss/vim-javascript'
 Plugin 'pbrisbin/vim-colors-off'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'scrooloose/nerdcommenter'
@@ -304,6 +305,13 @@ noremap <silent><leader>hh :Hoogle<cr>
 noremap <silent><leader>hi :HoogleInfo<cr>
 noremap <silent><leader>hz :HoogleClose<cr>
 
+" JavaScript
+let g:javascript_fold = 0
+let g:javascript_enable_domhtmlcss = 1
+
+" JSX
+let g:jsx_ext_required = 0
+
 " Neco GHC
 let g:necoghc_enable_detailed_browse = 1
 
@@ -334,6 +342,7 @@ let g:scala_first_party_namespaces = 'es.uvigo.*'
 " Syntastic
 let g:syntastic_mode_map = { 'mode': 'passive' }
 let g:syntastic_haskell_checkers = ['hlint']
+let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 noremap <silent><leader>e :Errors<cr>
