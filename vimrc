@@ -146,14 +146,17 @@ autocmd CursorHold * checktime
 " FUNCTIONS
 function! ToggleColors()
     if g:colors_name == 'hybrid'
+        set background=dark
         colorscheme off
         AirlineTheme zenburn
         highlight clear conceal
     elseif g:colors_name == 'off'
+        set background=light
         colorscheme hybrid-light
         AirlineTheme hybrid
         highlight clear conceal
     else
+        set background=dark
         colorscheme hybrid
         AirlineTheme hybrid
         highlight clear conceal
