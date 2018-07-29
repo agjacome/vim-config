@@ -261,7 +261,7 @@ cnoremap <c-e> <end>
 cnoremap %% <c-r>=expand('%:p:h').'/'<cr>
 
 nnoremap <silent><cr> :nohlsearch<cr>
-nnoremap <silent><leader>d "=strftime("%d %b %Y %H:%M")<cr>p
+nnoremap <silent><leader>D "=strftime("%d %b %Y %H:%M")<cr>p
 nnoremap <silent><leader>b <c-^>
 nnoremap Q <nop>
 
