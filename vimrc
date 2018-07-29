@@ -206,6 +206,7 @@ command! KillWhitespace :normal :%s/\s\+$//ge<cr><c-o><cr>
 
 " MAPPINGS
 let mapleader=","
+let maplocalleader=";"
 noremap ,, ,
 
 nnoremap q: <Nop>
@@ -333,7 +334,6 @@ noremap <silent><leader>F :NERDTreeToggle<cr>
 
 " Scala
 let g:scala_sort_across_groups = 1
-let g:scala_first_party_namespaces = 'es.uvigo.*'
 
 " Syntastic
 let g:syntastic_mode_map = { 'mode': 'passive' }
