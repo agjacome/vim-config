@@ -1,6 +1,10 @@
 set nocompatible
 set encoding=utf-8
 
+if has('python3')
+  silent! python3 1
+endif
+
 " vim plugins, managed by Plug
 filetype off
 call plug#begin('~/.vim/plugged')
@@ -63,11 +67,11 @@ set laststatus=2
 set lazyredraw
 set list
 set listchars+=extends:❯
-set listchars+=nbsp:⋅
+set listchars+=nbsp:.
 set listchars+=precedes:❮
-set listchars+=trail:⋅
+set listchars+=trail:.
 set listchars=""
-set listchars=tab:▸\
+set listchars=tab:.\
 set magic
 set nobackup
 set nofoldenable
@@ -103,11 +107,8 @@ set wildmode=longest,list
 let &showbreak = '↳ '
 
 " colorscheme
-if $TERM =~ "-256color"
-    set t_ut= t_Co=256
-    let g:hybrid_use_Xresources = 1
-endif
-
+set t_ut=
+set t_Co=256
 set background=dark
 colorscheme hybrid
 highlight clear conceal
@@ -259,7 +260,7 @@ nnoremap Q <nop>
 " plugin settings
 
 " Airline
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 0
 let g:airline#extensions#whitespace#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
