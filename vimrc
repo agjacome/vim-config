@@ -284,30 +284,12 @@ nmap <leader>a <Plug>(LiveEasyAlign)
 " Emmet
 let g:user_emmet_mode = 'a'
 
-" GHCMod
-let g:ghcmod_use_basedir = getcwd()
-noremap <silent><leader>ht :GhcModType<cr>
-noremap <silent><leader>hT :GhcModTypeInsert<cr>
-noremap <silent><leader><cr> :nohlsearch<cr>:GhcModTypeClear<cr>
-
-" HaskellConcealPlus
-set conceallevel=1 concealcursor=
-let g:hscoptions="𝐒𝐓𝐄𝐌AstB𝔻"
-
-" Hoogle
-noremap <silent><leader>hh :Hoogle<cr>
-noremap <silent><leader>hi :HoogleInfo<cr>
-noremap <silent><leader>hz :HoogleClose<cr>
-
 " JavaScript
 let g:javascript_fold = 0
 let g:javascript_enable_domhtmlcss = 1
 
 " JSX
 let g:jsx_ext_required = 0
-
-" Neco GHC
-let g:necoghc_enable_detailed_browse = 1
 
 " NerdCommenter
 let g:NERDCreateDefaultMappings = 1
