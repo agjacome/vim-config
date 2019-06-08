@@ -3,42 +3,39 @@ set encoding=utf-8              " always use utf
 
 filetype off
 
-" vim plugins, managed by vundle
-set rtp+=~/.vim/bundle/vundle
-call vundle#begin()
+" vim plugins, managed by Plug
+call plug#begin('~/.vim/plugged')
 
-Plugin 'gmarik/vundle'
+Plug 'chrisbra/csv.vim'
+Plug 'derekwyatt/vim-scala'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'elzr/vim-json'
+Plug 'ensime/ensime-vim'
+Plug 'flazz/vim-colorschemes'
+Plug 'honza/vim-snippets'
+Plug 'junegunn/vim-easy-align'
+Plug 'justinmk/vim-sneak'
+Plug 'kien/ctrlp.vim'
+Plug 'leafgarland/typescript-vim'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'pangloss/vim-javascript'
+Plug 'pbrisbin/vim-colors-off'
+Plug 'plasticboy/vim-markdown'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/syntastic'
+Plug 'sirver/ultisnips'
+Plug 'suan/vim-instant-markdown'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-scripts/gitignore'
+Plug 'vim-scripts/visincr'
 
-Plugin 'chrisbra/csv.vim'
-Plugin 'derekwyatt/vim-scala'
-Plugin 'editorconfig/editorconfig-vim'
-Plugin 'elzr/vim-json'
-Plugin 'ensime/ensime-vim'
-Plugin 'flazz/vim-colorschemes'
-Plugin 'honza/vim-snippets'
-Plugin 'junegunn/vim-easy-align'
-Plugin 'justinmk/vim-sneak'
-Plugin 'kien/ctrlp.vim'
-Plugin 'mattn/emmet-vim'
-Plugin 'mxw/vim-jsx'
-Plugin 'pangloss/vim-javascript'
-Plugin 'pbrisbin/vim-colors-off'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
-Plugin 'sirver/ultisnips'
-Plugin 'suan/vim-instant-markdown'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-surround'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'vim-scripts/gitignore'
-Plugin 'vim-scripts/visincr'
-
-call vundle#end()
+call plug#end()
 
 filetype plugin indent on       " enable filetypes and indentation
 syntax enable                   " enable syntax highlight
@@ -92,6 +89,7 @@ if $TERM =~ "-256color"
     set t_ut= t_Co=256
     let g:hybrid_use_Xresources = 1
 endif
+
 set background=dark
 colorscheme hybrid
 highlight clear conceal
