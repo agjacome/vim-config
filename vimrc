@@ -1,9 +1,8 @@
-set nocompatible                " vim defaults instead of vi
-set encoding=utf-8              " always use utf
-
-filetype off
+set nocompatible
+set encoding=utf-8
 
 " vim plugins, managed by Plug
+filetype off
 call plug#begin('~/.vim/plugged')
 
 Plug 'chrisbra/csv.vim'
@@ -11,10 +10,13 @@ Plug 'derekwyatt/vim-scala'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'elzr/vim-json'
 Plug 'flazz/vim-colorschemes'
+Plug 'guns/vim-clojure-highlight'
+Plug 'guns/vim-sexp'
 Plug 'honza/vim-snippets'
 Plug 'junegunn/vim-easy-align'
 Plug 'justinmk/vim-sneak'
 Plug 'kien/ctrlp.vim'
+Plug 'kien/rainbow_parentheses.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
@@ -29,6 +31,7 @@ Plug 'suan/vim-instant-markdown'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-sexp-mappings-for-regular-people'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -36,53 +39,68 @@ Plug 'vim-scripts/gitignore'
 Plug 'vim-scripts/visincr'
 
 call plug#end()
+filetype plugin indent on
+syntax enable
 
-filetype plugin indent on       " enable filetypes and indentation
-syntax enable                   " enable syntax highlight
-
-set directory=/tmp              " directory to save swap files
-set undodir=~/.vim/undo         " directory to save undo buffers
-set nobackup                    " do not create any...
-set nowritebackup               " ...backup files
-
-" MAIN SETTINGS
-set hidden                      " allow unsaved background buffers
-set autoindent                  " autoindent always
-set autowrite                   " autowrite file modifications
-set autoread                    " automatically reload external modifications
-set history=10000               " remember more commands and search history
-set undofile                    " save undos buffer to file
-set undolevels=100              " max number of changes to undo
-set undoreload=10000            " max number of lines to reload for undo
-set backspace=2                 " make backspace work as intended
-set nowrap                      " don't wrap long lines automatically
-set textwidth=79                " default text width is 79 columns
-set expandtab                   " replace tabs with space characters
-set tabstop=4                   " a tab is replaced with four spaces
-set softtabstop=4               " a softtab is replaced with four spaces
-set shiftwidth=4                " autoindent is also four spaces width
-set hlsearch                    " highlight search matches
-set incsearch                   " do incremental searching automatically
-set ignorecase                  " searches are case insensitive...
-set smartcase                   " ...unless they contain uppercase letters
-set formatoptions+=j            " remove comments when joining lines
-set nojoinspaces                " only one space when joining punctuation-ended lines
-set foldmethod=manual           " set folding to manual, never autofold
-set nofoldenable                " disable folding
-set updatetime=1000             " wait time to write swap and call CursorHold (in ms)
-set timeoutlen=300              " wait time for a key code to complete (in ms)
-set lazyredraw                  " do not update display while executing macros
-set magic                       " enable magic mode for regular expressions
-set virtualedit=block           " enable virtual cursor positioning in vblock mode
-
-" prevent vim from clobbering scrollback buffer
-set t_ti= t_te=
-
-" completion options
+" main settings
+set autoindent
+set autoread
+set autowrite
+set backspace=2
 set complete=.,b,u,]
-set wildmode=longest,list
 set completeopt=longest,menu
+set directory=/tmp
+set expandtab
+set fillchars+=vert:│
+set foldmethod=manual
+set formatoptions+=j
+set hidden
+set history=10000
+set hlsearch
+set ignorecase
+set incsearch
+set laststatus=2
+set lazyredraw
+set list
+set listchars+=extends:❯
+set listchars+=nbsp:⋅
+set listchars+=precedes:❮
+set listchars+=trail:⋅
+set listchars=""
+set listchars=tab:▸\
+set magic
+set nobackup
+set nofoldenable
+set nojoinspaces
+set nowrap
+set nowritebackup
+set numberwidth=2
 set pumheight=10
+set relativenumber
+set ruler
+set scrolloff=10
+set shiftwidth=4
+set shortmess+=cI
+set showcmd
+set smartcase
+set softtabstop=4
+set t_ti= t_te=
+set tabstop=4
+set tags=./.tags,.tags,./tags,tags;/
+set textwidth=79
+set timeoutlen=300
+set title
+set titleold=""
+set titlestring="vim: %F"
+set undodir=~/.vim/undo
+set undofile
+set undolevels=100
+set undoreload=10000
+set updatetime=300
+set virtualedit=block
+set wildmode=longest,list
+
+let &showbreak = '↳ '
 
 " colorscheme
 if $TERM =~ "-256color"
@@ -99,32 +117,6 @@ if &diff
     set diffopt=filler
 endif
 
-" show title
-set title
-set titleold=""
-set titlestring="vim: %F"
-
-set shortmess+=I                " disable startup message
-set relativenumber              " always show relative line numbers
-set numberwidth=2               " number of digits for line numbers
-set ruler                       " show cursor position all time
-set showcmd                     " display incomplete commands
-set laststatus=2                " always show statusline
-set scrolloff=10                " provide some context
-" set cursorline                " highlight current line
-
-set list                        " show whitespace characters
-set listchars=""                " reset whitespace characters list
-set listchars=tab:▸\            " tabs shown as right arrow and spaces
-set listchars+=trail:⋅          " trailing whitespaces shown as dots
-set listchars+=nbsp:⋅           " non-breakable spaces shown as dots
-set listchars+=extends:❯        " char to show when line continues right
-set listchars+=precedes:❮       " char to show when line continues left
-set fillchars+=vert:│           " vertical splits less gap between bars
-let &showbreak = '↳ '           " char to show at start of wrapped lines
-
-set tags=./.tags,.tags,./tags,tags;/
-
 " restore cursor position when reopening a file
 autocmd BufReadPost *
     \ if line("'\"") > 0 && line("'\"") <= line("$") |
@@ -134,7 +126,7 @@ autocmd BufReadPost *
 " check external modifications when inactive
 autocmd CursorHold * checktime
 
-" FUNCTIONS
+" functions
 function! ToggleColors()
     if g:colors_name == 'hybrid'
         set background=dark
@@ -202,7 +194,7 @@ endfunction
 
 command! KillWhitespace :normal :%s/\s\+$//ge<cr><c-o><cr>
 
-" MAPPINGS
+" mappings
 let mapleader=","
 let maplocalleader=";"
 noremap ,, ,
@@ -264,12 +256,47 @@ nnoremap <silent><leader>D "=strftime("%d %b %Y %H:%M")<cr>p
 nnoremap <silent><leader>b <c-^>
 nnoremap Q <nop>
 
-" PLUGIN SETTINGS
+" plugin settings
+
 " Airline
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#whitespace#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
+
+" Conquer of Completion
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+inoremap <silent><expr> <c-space> coc#refresh()
+
+nmap <leader>ac <Plug>(coc-codeaction)
+nmap <leader>rn <Plug>(coc-rename)
+nmap <silent>[c <Plug>(coc-diagnostic-prev)
+nmap <silent>]c <Plug>(coc-diagnostic-next)
+nmap <silent>gd <Plug>(coc-definition)
+nmap <silent>gi <Plug>(coc-implementation)
+nmap <silent>gr <Plug>(coc-references)
+nmap <silent>gy <Plug>(coc-type-definition)
+
+nnoremap <silent><space>a :<C-u>CocList diagnostics<cr>
+nnoremap <silent><space>o :<C-u>CocList outline<cr>
+nnoremap <silent><space>s :<C-u>CocList -I symbols<cr>
+nnoremap <silent><space>j :<C-u>CocNext<CR>
+nnoremap <silent><space>k :<C-u>CocPrev<CR>
+nnoremap <silent><space>p :<C-u>CocListResume<CR>
+
+nnoremap <silent> F :call CocAction('format')<CR>
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if &filetype == 'vim'
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
 
 " Ctrl-P
 let g:ctrlp_working_path_mode = 'r'
