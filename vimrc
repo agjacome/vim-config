@@ -226,11 +226,20 @@ let g:airline#extensions#tabline#enabled    = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 
 " Conquer of Completion
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-inoremap <silent><expr> <c-space> coc#refresh()
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 
 nmap <leader>ac <Plug>(coc-codeaction)
 nmap <leader>rn <Plug>(coc-rename)
+nmap <leader>qf <Plug>(coc-fix-current)
 nmap <silent>[c <Plug>(coc-diagnostic-prev)
 nmap <silent>]c <Plug>(coc-diagnostic-next)
 nmap <silent>gd <Plug>(coc-definition)
@@ -245,8 +254,8 @@ nnoremap <silent><space>j :<C-u>CocNext<CR>
 nnoremap <silent><space>k :<C-u>CocPrev<CR>
 nnoremap <silent><space>p :<C-u>CocListResume<CR>
 
-nnoremap <silent> F :call CocAction('format')<CR>
 nnoremap <silent> K :call <SID>show_documentation()<CR>
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 function! s:show_documentation()
   if &filetype == 'vim'
@@ -257,6 +266,12 @@ function! s:show_documentation()
 endfunction
 
 autocmd CursorHold * silent call CocActionAsync('highlight')
+autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+
+command! -nargs=0 Format :call CocAction('format')
+command! -nargs=? Fold   :call CocAction('fold', <f-args>)
+
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " CtrlSF
 nmap <leader>s <Plug>CtrlSFCwordPath<CR>
