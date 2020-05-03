@@ -177,14 +177,14 @@ nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
 " open split windows in places with leader+[HJKL]
-nnoremap <silent><leader>H :leftabove vnew<cr>
-nnoremap <silent><leader>L :rightbelow vnew<cr>
-nnoremap <silent><leader>K :leftabove new<cr>
-nnoremap <silent><leader>J :rightbelow new<cr>
+nnoremap <silent><leader>H :leftabove vnew<CR>
+nnoremap <silent><leader>L :rightbelow vnew<CR>
+nnoremap <silent><leader>K :leftabove new<CR>
+nnoremap <silent><leader>J :rightbelow new<CR>
 
 " navigation between buffers (Tab and Shift+Tab)
-nnoremap <silent><tab> :bnext<cr>
-nnoremap <silent><s-tab> :bprevious<cr>
+nnoremap <silent><tab> :bnext<CR>
+nnoremap <silent><s-tab> :bprevious<CR>
 
 " disable cursor keys in normal mode
 nnoremap <Left>  <nop>
@@ -193,26 +193,27 @@ nnoremap <Up>    <nop>
 nnoremap <Down>  <nop>
 
 " simple delimitmate
-inoremap {<cr> {<cr>}<c-o>O
-inoremap [<cr> [<cr>]<c-o>O
-inoremap (<cr> (<cr>)<c-o>O
+inoremap {<CR> {<CR>}<c-o>O
+inoremap [<CR> [<CR>]<c-o>O
+inoremap (<CR> (<CR>)<c-o>O
 inoremap {<Space> { }<Left>
 inoremap [<Space> [ ]<Left>
 inoremap (<Space> ( )<Left>
 
-noremap <leader>m :make<cr>
-noremap <silent><leader>r :redraw!<cr>
-noremap <silent><leader>k :call KillWhitespace()<cr>
+noremap <leader>m :make<CR>
+noremap <silent><leader>r :redraw!<CR>
+noremap <silent><leader>k :call KillWhitespace()<CR>
 
-noremap <f5> :call ToggleColors()<cr>
-noremap <f6> :call ToggleNumbers()<cr>
-noremap <f7> :call ToggleConceal()<cr>
-noremap <f8> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<cr>
+noremap <f5> :call ToggleColors()<CR>
+noremap <f6> :call ToggleNumbers()<CR>
+noremap <f7> :call ToggleConceal()<CR>
+noremap <f8> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
-cnoremap %% <c-r>=expand('%:p:h').'/'<cr>
+cnoremap %% <c-r>=expand('%:p:h').'/'<CR>
 
-nnoremap <silent><cr> :nohlsearch<cr>
-nnoremap <silent><leader>D "=strftime("%Y/%m/%d %H:%M")<cr>p
+nnoremap <silent><CR> :nohlsearch<CR>
+autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
+nnoremap <silent><leader>D "=strftime("%Y/%m/%d %H:%M")<CR>p
 nnoremap <silent><leader>b <c-^>
 nnoremap Q <nop>
 
@@ -223,7 +224,7 @@ nnoremap Q <nop>
 let g:airline_powerline_fonts               = 1
 let g:airline#extensions#whitespace#enabled = 1
 let g:airline#extensions#tabline#enabled    = 1
-let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 
 " Conquer of Completion
 inoremap <silent><expr> <TAB>
@@ -240,6 +241,8 @@ endfunction
 nmap <leader>ac <Plug>(coc-codeaction)
 nmap <leader>rn <Plug>(coc-rename)
 nmap <leader>qf <Plug>(coc-fix-current)
+nmap <leader>ws <Plug>(coc-metals-expand-decoration)
+
 nmap <silent>[c <Plug>(coc-diagnostic-prev)
 nmap <silent>]c <Plug>(coc-diagnostic-next)
 nmap <silent>gd <Plug>(coc-definition)
@@ -247,15 +250,15 @@ nmap <silent>gi <Plug>(coc-implementation)
 nmap <silent>gr <Plug>(coc-references)
 nmap <silent>gy <Plug>(coc-type-definition)
 
-nnoremap <silent><space>a :<C-u>CocList diagnostics<cr>
-nnoremap <silent><space>o :<C-u>CocList outline<cr>
-nnoremap <silent><space>s :<C-u>CocList -I symbols<cr>
+nnoremap <silent><space>a :<C-u>CocList diagnostics<CR>
+nnoremap <silent><space>o :<C-u>CocList outline<CR>
+nnoremap <silent><space>s :<C-u>CocList -I symbols<CR>
 nnoremap <silent><space>j :<C-u>CocNext<CR>
 nnoremap <silent><space>k :<C-u>CocPrev<CR>
 nnoremap <silent><space>p :<C-u>CocListResume<CR>
 
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+nnoremap <silent>K :call <SID>show_documentation()<CR>
+inoremap <silent><expr> <CR> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 function! s:show_documentation()
   if &filetype == 'vim'
@@ -281,8 +284,8 @@ vmap <Enter>   <Plug>(LiveEasyAlign)
 nmap <leader>a <Plug>(LiveEasyAlign)
 
 " FZF
-nnoremap <leader>p :FZF<cr>
-nnoremap <c-p> :GFiles --cached --others --exclude-standard<cr>
+nnoremap <leader>p :FZF<CR>
+nnoremap <c-p> :GFiles --cached --others --exclude-standard<CR>
 
 " GTFO
 let g:gtfo#terminals = { 'unix': 'urxvtc -cd' }
@@ -301,14 +304,14 @@ let g:NERDTreeQuitOnOpen = 1
 let g:NERDTreeShowHidden = 1
 
 function! ToggleFindNERD()
-    if exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
-        exec ':NERDTreeToggle'
-    else
-        exec ':NERDTreeFind'
-    endif
+if exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
+    exec ':NERDTreeToggle'
+else
+    exec ':NERDTreeFind'
+endif
 endfunction
 
-noremap <silent><leader>f :call ToggleFindNERD()<cr>
+noremap <silent><leader>f :call ToggleFindNERD()<CR>
 
 " RipGrep
 let g:rg_command = 'rg --vimgrep --smart-case'
