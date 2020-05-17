@@ -122,7 +122,7 @@ function! ToggleColors()
     if g:colors_name == 'hybrid'
         set background=dark
         colorscheme off
-        AirlineTheme zenburn
+        AirlineTheme minimalist
         highlight clear conceal
     elseif g:colors_name == 'off'
         set background=light
@@ -132,7 +132,7 @@ function! ToggleColors()
     else
         set background=dark
         colorscheme hybrid
-        AirlineTheme hybrid
+        AirlineTheme hybridline
         highlight clear conceal
     endif
 endfunction
@@ -221,10 +221,11 @@ nnoremap Q <nop>
 " plugin settings
 
 " Airline
+let g:airline_theme                         = 'hybridline'
 let g:airline_powerline_fonts               = 1
 let g:airline#extensions#whitespace#enabled = 1
 let g:airline#extensions#tabline#enabled    = 1
-let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+let g:airline#extensions#tabline#formatter  = 'unique_tail_improved'
 
 " Conquer of Completion
 inoremap <silent><expr> <TAB>
