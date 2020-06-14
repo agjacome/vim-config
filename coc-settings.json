@@ -1,11 +1,49 @@
 {
-  "languageserver": {
-    "metals": {
-      "command": "metals-vim",
-      "rootPatterns": ["build.sbt"],
-      "filetypes": ["scala", "sbt"]
-    }
+  "coc.preferences.formatOnType": true,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "javascript",
+    "javascriptreact",
+    "json",
+    "markdown",
+    "scala",
+    "typescript",
+    "typescriptreact"
+  ],
+
+  "suggest.asciiCharactersOnly": true,
+
+  "snippets.extends": {
+    "javascriptreact": ["javascript"],
+    "typescript": ["javascript"]
   },
 
-  "coc.preferences.formatOnType": true
+  "eslint.autoFixOnSave": true,
+  "eslint.filetypes": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+
+  "prettier.disableSuccessMessage": true,
+
+  "markdownlint.config": {
+    "default": true,
+    "line-length": false
+  },
+
+  "languageserver": {
+    "bash": {
+      "command": "bash-language-server",
+      "filetypes": ["sh"],
+      "args": ["start"],
+      "ignoredRootPaths": ["~"]
+    },
+    "metals": {
+      "command": "metals-vim",
+      "rootPatterns": ["build.sbt", "build.sc"],
+      "filetypes": ["scala", "sbt"],
+      "statusBarEnabled": "true"
+    }
+  }
 }
