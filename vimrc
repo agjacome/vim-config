@@ -21,6 +21,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
 Plug 'suan/vim-instant-markdown'
+Plug 'styled-components/vim-styled-components'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
@@ -300,9 +301,10 @@ let g:NERDCommentWholeLinesInVMode = 1
 let g:NERDSpaceDelims              = 1
 
 " NerdTree
-let g:NERDTreeMinimalUI  = 0
-let g:NERDTreeQuitOnOpen = 1
-let g:NERDTreeShowHidden = 1
+let g:NERDTreeMinimalUI             = 0
+let g:NERDTreeQuitOnOpen            = 1
+let g:NERDTreeShowHidden            = 1
+let g:NERDTreeGitStatusUseNerdFonts = 1
 
 function! ToggleFindNERD()
 if exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
