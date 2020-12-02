@@ -1,5 +1,6 @@
 set nocompatible
 set encoding=utf-8
+let skip_defaults_vim=1
 
 " vim plugins, managed by Plug
 filetype off
@@ -21,7 +22,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
 Plug 'suan/vim-instant-markdown'
-Plug 'styled-components/vim-styled-components'
+" Plug 'styled-components/vim-styled-components'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
@@ -41,6 +42,7 @@ set autoindent
 set autoread
 set autowrite
 set backspace=2
+set clipboard=exclude:.*
 set complete=.,b,u,]
 set completeopt=longest,menu
 set directory=/tmp
@@ -92,6 +94,7 @@ set undofile
 set undolevels=100
 set undoreload=10000
 set updatetime=300
+set viminfo=""
 set virtualedit=block
 set wildmode=longest,list
 

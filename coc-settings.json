@@ -1,6 +1,7 @@
 {
   "coc.preferences.formatOnType": true,
   "coc.preferences.formatOnSaveFiletypes": [
+    "html",
     "javascript",
     "javascriptreact",
     "json",
@@ -12,11 +13,6 @@
 
   "suggest.asciiCharactersOnly": true,
 
-  "snippets.extends": {
-    "javascriptreact": ["javascript"],
-    "typescript": ["javascript"]
-  },
-
   "eslint.autoFixOnSave": true,
   "eslint.filetypes": [
     "javascript",
@@ -27,23 +23,23 @@
 
   "prettier.disableSuccessMessage": true,
 
+  "html.enable": true,
+  "html.autoClosingTags": true,
+  "html.format.enable": true,
+  "html.suggest.html5": true,
+  "html.validate.html": true,
+  "html.filetypes": ["html"],
+
   "markdownlint.config": {
     "default": true,
     "line-length": false
   },
 
   "languageserver": {
-    "bash": {
-      "command": "bash-language-server",
-      "filetypes": ["sh"],
-      "args": ["start"],
-      "ignoredRootPaths": ["~"]
-    },
     "metals": {
       "command": "metals-vim",
       "rootPatterns": ["build.sbt", "build.sc"],
-      "filetypes": ["scala", "sbt"],
-      "statusBarEnabled": "true"
+      "filetypes": ["scala", "sbt"]
     }
   }
 }
