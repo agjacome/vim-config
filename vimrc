@@ -17,7 +17,7 @@ Plug 'justinmk/vim-gtfo'
 Plug 'justinmk/vim-sneak'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'pbrisbin/vim-colors-off'
+Plug 'pbrisbin/vim-colors-off', {'branch': 'main'}
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
